@@ -4,6 +4,7 @@ App focused on using User Defaults table views for data management on device sto
  
 **This app use:**
 
+        Auto Layout
         UserDefaults
         UITableViewController
         UIViewCell
