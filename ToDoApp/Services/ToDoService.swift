@@ -13,11 +13,9 @@ class ToDoService {
     
     func saveTodo(newTodo: String) {
         if !newTodo.isEmpty {
-            if let savedTodos = UserDefaults.standard.object(forKey: self.todosKey) {
-                var newTodos = savedTodos as! [String]
-                newTodos.append(newTodo)
-                UserDefaults.standard.setValue(newTodos, forKey: self.todosKey)
-            }
+            var todos = self.getToDos()
+            todos.append(newTodo)
+            UserDefaults.standard.set(todos, forKey: self.todosKey)
         }
     }
     
