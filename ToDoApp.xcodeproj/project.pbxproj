@@ -15,6 +15,8 @@
 		825100F52535615B000D81A7 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825100F42535615B000D81A7 /* ToDoListViewController.swift */; };
 		825100F925356386000D81A7 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825100F825356386000D81A7 /* AddToDoViewController.swift */; };
 		825100FC25356498000D81A7 /* ToDoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825100FB25356498000D81A7 /* ToDoService.swift */; };
+		82F7B4CE25360C4B007825C3 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B4CD25360C4B007825C3 /* UIViewControllerExtension.swift */; };
+		82F7B4D125361291007825C3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B4D025361291007825C3 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		825100F825356386000D81A7 /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		825100FB25356498000D81A7 /* ToDoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoService.swift; sourceTree = "<group>"; };
 		825100FE253572D3000D81A7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		82F7B4CD25360C4B007825C3 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		82F7B4D025361291007825C3 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		825100DA2535602C000D81A7 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				82F7B4CB25360C2A007825C3 /* Lib */,
 				825100F1253560B0000D81A7 /* Controllers */,
 				825100F02535609E000D81A7 /* Services */,
 				825100DB2535602C000D81A7 /* AppDelegate.swift */,
@@ -89,6 +94,15 @@
 				825100F825356386000D81A7 /* AddToDoViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		82F7B4CB25360C2A007825C3 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				82F7B4CD25360C4B007825C3 /* UIViewControllerExtension.swift */,
+				82F7B4D025361291007825C3 /* UIViewExtension.swift */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +177,9 @@
 			files = (
 				825100F925356386000D81A7 /* AddToDoViewController.swift in Sources */,
 				825100DC2535602C000D81A7 /* AppDelegate.swift in Sources */,
+				82F7B4CE25360C4B007825C3 /* UIViewControllerExtension.swift in Sources */,
 				825100FC25356498000D81A7 /* ToDoService.swift in Sources */,
+				82F7B4D125361291007825C3 /* UIViewExtension.swift in Sources */,
 				825100F52535615B000D81A7 /* ToDoListViewController.swift in Sources */,
 				825100DE2535602C000D81A7 /* SceneDelegate.swift in Sources */,
 			);
