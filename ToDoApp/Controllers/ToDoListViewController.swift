@@ -15,9 +15,17 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            ToDoService.instance.removeTodo(index: indexPath.row)
+            self.updateToDos()
+        }
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        self.getTodos()
-        tableView.reloadData()
+        self.updateToDos()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,8 +46,9 @@ class ToDoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func getTodos() {
+    func updateToDos() {
         todos = ToDoService.instance.getToDos()
+        tableView.reloadData()
     }
     
 }

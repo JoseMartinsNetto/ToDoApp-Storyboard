@@ -19,6 +19,12 @@ class ToDoService {
         }
     }
     
+    func removeTodo(index: Int) {
+        var todos = self.getToDos()
+        todos.remove(at: index)
+        UserDefaults.standard.set(todos, forKey: self.todosKey)
+    }
+    
     func getToDos() -> [String] {
         if let todos = UserDefaults.standard.object(forKey: self.todosKey) {
             return todos as! [String]
