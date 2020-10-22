@@ -9,7 +9,7 @@ import UIKit
 
 class AddToDoViewController: UIViewController {
     @IBOutlet weak var newTodoTextField: UITextField!
-    var keyboardHeigh: CGFloat?
+    var keyboardHeigh: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class AddToDoViewController: UIViewController {
             
             newTodoTextField.text = ""
             
-            self.showToast(message: "Tarefa adicionada!", offSetY: keyboardHeigh!)
+            self.showToast(message: "Tarefa adicionada!", offSetY: keyboardHeigh)
         }
     }
     
