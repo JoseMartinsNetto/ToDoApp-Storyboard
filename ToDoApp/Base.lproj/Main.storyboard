@@ -21,8 +21,13 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite a tarefa.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5rx-GL-GF0">
-                                <rect key="frame" x="20" y="162" width="374" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite a tarefa..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5rx-GL-GF0">
+                                <rect key="frame" x="20" y="162" width="374" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ADf-fI-gSe"/>
+                                </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -33,8 +38,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoB-bp-TaP">
-                                <rect key="frame" x="174.5" y="216" width="65" height="30"/>
-                                <state key="normal" title="Adicionar"/>
+                                <rect key="frame" x="20" y="222" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Zi-sR-nH4"/>
+                                </constraints>
+                                <state key="normal" title="Adicionar">
+                                    <color key="titleColor" red="0.86177545789999999" green="0.52633231879999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addTodoButtonAction:" destination="JKs-0u-TRW" eventType="touchUpInside" id="HIf-kb-2NN"/>
                                 </connections>
@@ -43,18 +53,20 @@
                         <viewLayoutGuide key="safeArea" id="Y8x-1u-XNE"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ZoB-bp-TaP" firstAttribute="leading" secondItem="Y8x-1u-XNE" secondAttribute="leading" constant="20" id="4wV-Vx-KCU"/>
                             <constraint firstItem="WMJ-Nc-MBe" firstAttribute="leading" secondItem="Y8x-1u-XNE" secondAttribute="leading" constant="20" id="7uL-9E-dbH"/>
                             <constraint firstItem="Y8x-1u-XNE" firstAttribute="trailing" secondItem="5rx-GL-GF0" secondAttribute="trailing" constant="20" id="A0Q-Bn-REa"/>
                             <constraint firstItem="5rx-GL-GF0" firstAttribute="top" secondItem="WMJ-Nc-MBe" secondAttribute="bottom" constant="20" id="JRA-Hh-J52"/>
                             <constraint firstItem="ZoB-bp-TaP" firstAttribute="top" secondItem="5rx-GL-GF0" secondAttribute="bottom" constant="20" id="JWA-F3-X08"/>
                             <constraint firstItem="5rx-GL-GF0" firstAttribute="leading" secondItem="Y8x-1u-XNE" secondAttribute="leading" constant="20" id="QXC-fG-Yov"/>
                             <constraint firstItem="Y8x-1u-XNE" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WMJ-Nc-MBe" secondAttribute="trailing" symbolic="YES" id="Qpp-nJ-2az"/>
-                            <constraint firstItem="ZoB-bp-TaP" firstAttribute="centerX" secondItem="0aT-ff-na2" secondAttribute="centerX" id="REC-Ck-qSj"/>
+                            <constraint firstItem="Y8x-1u-XNE" firstAttribute="trailing" secondItem="ZoB-bp-TaP" secondAttribute="trailing" constant="20" id="Rbk-iC-f6M"/>
                             <constraint firstItem="WMJ-Nc-MBe" firstAttribute="top" secondItem="Y8x-1u-XNE" secondAttribute="top" constant="30" id="jYX-sA-1l0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HZu-W1-kKe"/>
                     <connections>
+                        <outlet property="addTaskButton" destination="ZoB-bp-TaP" id="qR4-p9-Zcd"/>
                         <outlet property="newTodoTextField" destination="5rx-GL-GF0" id="Bq2-UG-XBg"/>
                     </connections>
                 </viewController>
@@ -77,14 +89,14 @@
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="ZcS-wu-xc2" customClass="ToDoCell" customModule="ToDoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZcS-wu-xc2" id="Gtt-Ed-gNK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWM-sM-fkY">
-                                                    <rect key="frame" x="20" y="11" width="82" height="21.5"/>
+                                                    <rect key="frame" x="20" y="11" width="82" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -149,7 +161,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uyb-2t-YvQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.95686274510000002" green="0.50588235290000005" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.86177545789999999" green="0.52633231879999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>

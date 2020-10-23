@@ -27,13 +27,25 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.tableFooterView = UIView()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Editar") {  (contextualAction, view, boolValue) in
+            
+        }
         
-        if editingStyle == .delete {
+        let swipeActions = UISwipeActionsConfiguration(actions: [editAction])
+
+        return swipeActions
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Remover") {  (contextualAction, view, boolValue) in
             ToDoService.instance.removeTodo(index: indexPath.row)
             self.updateToDos()
         }
         
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+
+        return swipeActions
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,9 +58,6 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell") as! ToDoCell
-        
-        cell.selectionStyle = .gray
-        cell.selectedBackgroundView?.backgroundColor = .gray
         
         cell.fillUI(taskName: todos[indexPath.row])
         return cell
