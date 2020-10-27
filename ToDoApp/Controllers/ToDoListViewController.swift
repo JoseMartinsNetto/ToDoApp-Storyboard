@@ -11,6 +11,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var todos: [String] = []
+    let service: ToDoService = ToDoService.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Remover") {  (contextualAction, view, boolValue) in
-            ToDoService.instance.removeTodo(index: indexPath.row)
+            self.service.removeTodo(index: indexPath.row)
             self.updateToDos()
         }
         
@@ -68,7 +69,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func updateToDos() {
-        todos = ToDoService.instance.getToDos()
+        todos = service.getToDos()
         tableView.reloadData()
     }
     

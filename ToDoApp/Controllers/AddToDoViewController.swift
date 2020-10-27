@@ -46,14 +46,12 @@ class AddToDoViewController: UIViewController {
     }
     
     @IBAction func addTodoButtonAction(_ sender: Any) {
-        
         if let newTodo = newTodoTextField.text {
             service.saveTodo(newTodo: newTodo)
             
-            newTodoTextField.text = ""
-            
-            self.showToast(message: "Tarefa adicionada!", offSetY: keyboardHeigh)
-            navigationController?.popViewController(animated: true)
+            self.showToast(message: "Tarefa adicionada!", offSetY: keyboardHeigh) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
