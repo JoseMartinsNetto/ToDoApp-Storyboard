@@ -24,15 +24,9 @@ extension UIViewController {
                 height: 35
             )
         )
-        
-        if self.traitCollection.userInterfaceStyle == .dark {
-            toastLabel.backgroundColor = UIColor.white.withAlphaComponent(0.6)
-        } else {
-            toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        }
                 
-        toastLabel.backgroundColor = UIColor.white.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        toastLabel.textColor = UIColor.black
         toastLabel.font = UIFont.systemFont(ofSize: size)
         toastLabel.textAlignment = .center;
         toastLabel.text = message
@@ -43,7 +37,7 @@ extension UIViewController {
         self.view.addSubview(toastLabel)
             
         UIView.animate(
-            withDuration: 4.0,
+            withDuration: 5.0,
             delay: 0.1,
             options: .curveEaseOut, animations: {
              toastLabel.alpha = 0.0
