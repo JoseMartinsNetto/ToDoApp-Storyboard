@@ -12,15 +12,58 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     var todos: [String] = []
     let service: ToDoService = ToDoService.instance
+    let toDoModalCard = AddTaskCard()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setupTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.updateToDos()
     }
+    
+    @IBAction func openToDoModal(_ sender: Any) {
+        view.addSubview(toDoModalCard)
+        toDoModalCard.fill(
+            top: nil,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .zero,
+            size: .init(width: 100, height: 100)
+        )
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        toDoModalCard.textField.endEditing(true)
+    }
+    
+    
+    @objc func onKeyboardShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+                UIView.animate(withDuration: duration) {
+                    self.toDoModalCard.bottomAnchor
+                        .constraint(equalTo: self.view.bottomAnchor, constant: keyboardSize.height).isActive = true
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    @objc func onKeyboardHide(notification: NSNotification) {
+        if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            
+            UIView.animate(withDuration: duration) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
     
     func setupTableView() {
         tableView.delegate = self
