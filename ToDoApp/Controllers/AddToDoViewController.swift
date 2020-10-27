@@ -12,6 +12,7 @@ class AddToDoViewController: UIViewController {
     @IBOutlet weak var addTaskButton: UIButton!
     
     var keyboardHeigh: CGFloat = 0
+    let service: ToDoService = ToDoService.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +46,12 @@ class AddToDoViewController: UIViewController {
     }
     
     @IBAction func addTodoButtonAction(_ sender: Any) {
-        
         if let newTodo = newTodoTextField.text {
-            ToDoService.instance.saveTodo(newTodo: newTodo)
+            service.saveTodo(newTodo: newTodo)
             
-            newTodoTextField.text = ""
-            
-            self.showToast(message: "Tarefa adicionada!", offSetY: keyboardHeigh)
+            self.showToast(message: "Tarefa adicionada!", offSetY: keyboardHeigh) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     

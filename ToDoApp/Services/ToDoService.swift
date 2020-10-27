@@ -26,8 +26,8 @@ class ToDoService {
     }
     
     func getToDos() -> [String] {
-        if let todos = UserDefaults.standard.object(forKey: self.todosKey) {
-            return todos as! [String]
+        if let todos = UserDefaults.standard.object(forKey: self.todosKey) as? [String]{
+            return todos.reversed()
         }
         
         return []
